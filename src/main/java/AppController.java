@@ -1,6 +1,7 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import crud.file_typs.Executable;
 import crud.file_typs.binary.*;
+import crud.file_typs.csv.StringFormatExecutorCSV;
 import crud.file_utils.Constants;
 import crud.file_utils.FileUtils;
 import crud.string.impl.JsonStringConverter;
@@ -20,7 +21,7 @@ public class AppController {
     private List<Person> arrayList;
     private List<Person> tempList;
     private Executable executor;
-    private FileUtils fileUtils;
+    private final FileUtils fileUtils;
     private String fileName;
 
     public AppController() {
@@ -46,11 +47,13 @@ public class AppController {
                 if (fileName.equalsIgnoreCase(SWITCH)) {
                     changeFormat();
                 } else if (!fileUtils.isFileEmpty(fileName)) {
+
                     try {
                         tempList = executor.read(fileName);
                     } catch (JsonProcessingException e) {
                         e.printStackTrace();
                     }
+
                     for (Person p : tempList) {
                         System.out.println(p);
                     }
@@ -125,9 +128,9 @@ public class AppController {
             case Constants.JSON:
                 executor = new StringFormatExecutorJSON(new JsonStringConverter());
                 break;
-//            case Constants.CSV:
-//            executor = new CsvExecutor();
-//            break;
+            case Constants.CSV:
+            executor = new StringFormatExecutorCSV();
+            break;
             case Constants.YAML:
             executor = new StringFormatExecutorYAML(new YamlStringConverter());
             break;

@@ -1,11 +1,16 @@
-package crud.file_typs.json;
+package crud.file_typs.csv;
 
+import com.opencsv.CSVWriter;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 import crud.file_typs.Executable;
 import crud.file_utils.Constants;
-import crud.file_utils.FileUtils;
-import crud.string.IPersonStringConverter;
 import person.Person;
 
+import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -13,28 +18,43 @@ import java.util.Scanner;
 import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
 import static crud.file_utils.Constants.FILE_WAS_UPD;
 
-public class StringFormatExecutorJSON implements Executable {
-    private final FileUtils fileUtils;
+public class StringFormatExecutorCSV implements Executable {
     private final Scanner scanner;
-    private final IPersonStringConverter personStringConverter;
 
-    public StringFormatExecutorJSON(IPersonStringConverter personStringConverter) {
-        this.personStringConverter = personStringConverter;
-        fileUtils = new FileUtils();
+    public StringFormatExecutorCSV() {
         scanner = new Scanner(System.in);
     }
 
     public boolean write(String fileName, List<Person> arrayList) {
-        String content;
-        content = personStringConverter.personToString(arrayList);
-        arrayList.clear();
-        return fileUtils.saveToFile(fileName, content);
+
+        try {
+            Writer writer  = new FileWriter(fileName);
+            StatefulBeanToCsv sbc = new StatefulBeanToCsvBuilder(writer)
+                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                    .build();
+            sbc.write(arrayList);
+            writer.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CsvRequiredFieldEmptyException e) {
+            e.printStackTrace();
+        } catch (CsvDataTypeMismatchException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public List<Person> read(String fileName) {
-        List<Person> personList;
-        String output = fileUtils.readFromFile(fileName);
-        personList = personStringConverter.stringToPerson(output);
+        List<Person> personList = null;
+        try {
+            personList = new CsvToBeanBuilder<Person>(new FileReader(fileName))
+                    .withType(Person.class)
+                    .build()
+                    .parse();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return personList;
     }
 

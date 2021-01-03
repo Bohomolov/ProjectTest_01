@@ -2,7 +2,6 @@ package crud.file_typs.binary;
 
 import crud.file_typs.Executable;
 import crud.file_utils.Constants;
-import crud.file_utils.FileUtils;
 import person.Person;
 
 import java.io.*;
@@ -15,15 +14,13 @@ import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
 import static crud.file_utils.Constants.FILE_WAS_UPD;
 
 public class BinaryExecutor implements Executable {
-    private FileUtils fileUtils;
-    private Scanner scanner;
+    private final Scanner scanner;
 
    public BinaryExecutor(){
-        fileUtils = new FileUtils();
         scanner =new Scanner(System.in);
     }
 
-    public  boolean write(String fileName, List<Person> arrayList){
+    public boolean write(String fileName, List<Person> arrayList){
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {

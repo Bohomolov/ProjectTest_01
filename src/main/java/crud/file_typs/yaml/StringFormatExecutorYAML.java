@@ -1,13 +1,11 @@
 package crud.file_typs.yaml;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import crud.file_typs.Executable;
 import crud.file_utils.Constants;
 import crud.file_utils.FileUtils;
 import crud.string.IPersonStringConverter;
 import person.Person;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -16,9 +14,9 @@ import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
 import static crud.file_utils.Constants.FILE_WAS_UPD;
 
 public class StringFormatExecutorYAML implements Executable {
-    private FileUtils fileUtils;
-    private Scanner scanner;
-    private IPersonStringConverter personStringConverter;
+    private final FileUtils fileUtils;
+    private final Scanner scanner;
+    private final IPersonStringConverter personStringConverter;
 
     public StringFormatExecutorYAML(IPersonStringConverter personStringConverter) {
         this.personStringConverter = personStringConverter;
@@ -28,25 +26,17 @@ public class StringFormatExecutorYAML implements Executable {
 
 
     public boolean write(String fileName, List<Person> arrayList) {
-        String content = null;
-        try {
-            content = personStringConverter.personToString(arrayList);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        String content;
+        content = personStringConverter.personToString(arrayList);
         arrayList.clear();
         return fileUtils.saveToFile(fileName, content);
     }
 
 
     public List<Person> read(String fileName) {
-        List<Person> personList = new ArrayList<>();
+        List<Person> personList;
         String output = fileUtils.readFromFile(fileName);
-        try {
-            personList = personStringConverter.stringToPerson(output);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        personList = personStringConverter.stringToPerson(output);
         return personList;
     }
 

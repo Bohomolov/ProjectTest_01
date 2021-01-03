@@ -1,13 +1,20 @@
 package person;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 import java.io.Serializable;
 
 
 public class Person implements Serializable {
+    @CsvBindByPosition(position = 0)
     private int id;
+    @CsvBindByPosition(position = 1)
     private String firstName;
+    @CsvBindByPosition(position = 2)
     private String lastName;
+    @CsvBindByPosition(position = 3)
     private int age;
+    @CsvBindByPosition(position = 4)
     private String city;
 
 
