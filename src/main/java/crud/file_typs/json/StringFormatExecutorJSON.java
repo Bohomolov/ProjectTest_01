@@ -53,7 +53,7 @@ public class StringFormatExecutorJSON implements Executable {
             if (iterPerson.getId() == id) {
                 iterPerson.setFirstName(array[0]);
                 iterPerson.setLastName(array[1]);
-                iterPerson.setAge(Integer.parseInt(array[2]));
+                iterPerson.setAge(array[2]);
                 iterPerson.setCity(array[3]);
                 break;
             }

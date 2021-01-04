@@ -155,7 +155,7 @@ public class AppController {
                 Integer.parseInt(array[0]),
                 array[1],
                 array[2],
-                Integer.parseInt(array[3]),
+                array[3],
                 array[4]);
 
         if (!fileUtils.isFileEmpty(fileName)) {

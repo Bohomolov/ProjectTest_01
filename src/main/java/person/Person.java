@@ -13,7 +13,7 @@ public class Person implements Serializable {
     @CsvBindByPosition(position = 2)
     private String lastName;
     @CsvBindByPosition(position = 3)
-    private int age;
+    private String age;
     @CsvBindByPosition(position = 4)
     private String city;
 
@@ -30,7 +30,7 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -50,7 +50,7 @@ public class Person implements Serializable {
         return lastName;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
@@ -69,7 +69,7 @@ public class Person implements Serializable {
                 '}';
     }
 
-    public Person(int id, String firstName, String lastName, int age, String city) {
+    public Person(int id, String firstName, String lastName, String age, String city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
