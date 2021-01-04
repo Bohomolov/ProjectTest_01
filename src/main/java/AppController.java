@@ -2,9 +2,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import crud.file_typs.Executable;
 import crud.file_typs.binary.*;
 import crud.file_typs.csv.StringFormatExecutorCSV;
+import crud.file_typs.xml.StringFormatExecutorXML;
 import crud.file_utils.Constants;
 import crud.file_utils.FileUtils;
 import crud.string.impl.JsonStringConverter;
+import crud.string.impl.XmlStringConverter;
 import crud.string.impl.YamlStringConverter;
 import crud.file_typs.yaml.*;
 import crud.file_typs.json.*;
@@ -134,9 +136,9 @@ public class AppController {
             case Constants.YAML:
             executor = new StringFormatExecutorYAML(new YamlStringConverter());
             break;
-//            case Constants.XML:
-//            executor = new XmlExecutor();
-//            break;
+            case Constants.XML:
+            executor = new StringFormatExecutorXML(new XmlStringConverter());
+            break;
             default:
                 System.out.println(Constants.INCORRECT_FORMAT);
                 break;
