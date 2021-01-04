@@ -1,11 +1,13 @@
 package person;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.opencsv.bean.CsvBindByPosition;
 
 import java.io.Serializable;
 
 
 public class Person implements Serializable {
+    @JsonIgnoreProperties(ignoreUnknown=true)
     @CsvBindByPosition(position = 0)
     private int id;
     @CsvBindByPosition(position = 1)
