@@ -1,8 +1,8 @@
-package crud.file_typs.json;
+package crud.filetyps.xml;
 
-import crud.file_typs.Executable;
-import crud.file_utils.Constants;
-import crud.file_utils.FileUtils;
+import crud.filetyps.Executable;
+import crud.fileutils.Constants;
+import crud.fileutils.FileUtils;
 import crud.string.IPersonStringConverter;
 import person.Person;
 
@@ -10,19 +10,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
-import static crud.file_utils.Constants.FILE_WAS_UPD;
+import static crud.fileutils.Constants.ENTER_PERSON_DATA_UPDATE;
+import static crud.fileutils.Constants.FILE_WAS_UPD;
 
-public class StringFormatExecutorJSON implements Executable {
+public class StringFormatExecutorXML implements Executable {
     private final FileUtils fileUtils;
     private final Scanner scanner;
     private final IPersonStringConverter personStringConverter;
 
-    public StringFormatExecutorJSON(IPersonStringConverter personStringConverter) {
+    public StringFormatExecutorXML(IPersonStringConverter personStringConverter){
         this.personStringConverter = personStringConverter;
         fileUtils = new FileUtils();
         scanner = new Scanner(System.in);
     }
+
 
     public boolean write(String fileName, List<Person> arrayList) {
         String content;
@@ -31,12 +32,14 @@ public class StringFormatExecutorJSON implements Executable {
         return fileUtils.saveToFile(fileName, content);
     }
 
+
     public List<Person> read(String fileName) {
         List<Person> personList;
         String output = fileUtils.readFromFile(fileName);
         personList = personStringConverter.stringToPerson(output);
         return personList;
     }
+
 
     public List<Person> update(List<Person> arrayList, int id) {
         Iterator<Person> iterator = arrayList.iterator();
@@ -62,8 +65,8 @@ public class StringFormatExecutorJSON implements Executable {
         return arrayList;
     }
 
-    public List<Person> delete(int id, List<Person> arrayList) {
 
+    public List<Person> delete(int id, List<Person> arrayList) {
         Iterator<Person> iterator = arrayList.iterator();
 
         while (iterator.hasNext()) {

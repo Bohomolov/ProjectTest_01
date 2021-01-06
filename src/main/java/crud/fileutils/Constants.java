@@ -1,4 +1,4 @@
-package crud.file_utils;
+package crud.fileutils;
 
 public class Constants {
 public static final String EXIT = "exit";
@@ -25,7 +25,7 @@ public static final String FILE_WAS_UPD = "File was update.";
 public static final String FILE_ELEMENT_WAS_DEL = "File element was delete.";
 public static final String FILE_WAS_SAVE = "File was save.";
 public static final String PERSON_WAS_CREATE = "Person was create.";
-public static final String ILLEGAL_PERSON_ID = "This id is busy.";
+public static final String ILLEGAL_PERSON_ID = "This id is reserved.";
 public static final String ENTER_PERSON_DATA_UPDATE = "Enter Person data: name, second name, age, city.";
 
 

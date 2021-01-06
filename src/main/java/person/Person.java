@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 
 public class Person implements Serializable {
-    @JsonIgnoreProperties(ignoreUnknown=true)
+    @JsonIgnoreProperties(ignoreUnknown = true)
     @CsvBindByPosition(position = 0)
     private int id;
     @CsvBindByPosition(position = 1)

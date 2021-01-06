@@ -1,4 +1,4 @@
-package crud.file_typs;
+package crud.filetyps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import person.Person;

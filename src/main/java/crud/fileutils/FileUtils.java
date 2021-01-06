@@ -1,4 +1,4 @@
-package crud.file_utils;
+package crud.fileutils;
 
 import person.Person;
 
@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 
-import static crud.file_utils.Constants.ILLEGAL_PERSON_ID;
+import static crud.fileutils.Constants.ILLEGAL_PERSON_ID;
 
 public class FileUtils {
 

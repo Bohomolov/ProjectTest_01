@@ -1,7 +1,7 @@
-package crud.file_typs.binary;
+package crud.filetyps.binary;
 
-import crud.file_typs.Executable;
-import crud.file_utils.Constants;
+import crud.filetyps.Executable;
+import crud.fileutils.Constants;
 import person.Person;
 
 import java.io.*;
@@ -10,8 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
-import static crud.file_utils.Constants.FILE_WAS_UPD;
+import static crud.fileutils.Constants.ENTER_PERSON_DATA_UPDATE;
+import static crud.fileutils.Constants.FILE_WAS_UPD;
 
 public class BinaryExecutor implements Executable {
     private final Scanner scanner;

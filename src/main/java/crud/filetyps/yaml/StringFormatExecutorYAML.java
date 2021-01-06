@@ -1,8 +1,8 @@
-package crud.file_typs.xml;
+package crud.filetyps.yaml;
 
-import crud.file_typs.Executable;
-import crud.file_utils.Constants;
-import crud.file_utils.FileUtils;
+import crud.filetyps.Executable;
+import crud.fileutils.Constants;
+import crud.fileutils.FileUtils;
 import crud.string.IPersonStringConverter;
 import person.Person;
 
@@ -10,15 +10,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
-import static crud.file_utils.Constants.FILE_WAS_UPD;
+import static crud.fileutils.Constants.ENTER_PERSON_DATA_UPDATE;
+import static crud.fileutils.Constants.FILE_WAS_UPD;
 
-public class StringFormatExecutorXML implements Executable {
+public class StringFormatExecutorYAML implements Executable {
     private final FileUtils fileUtils;
     private final Scanner scanner;
     private final IPersonStringConverter personStringConverter;
 
-    public StringFormatExecutorXML(IPersonStringConverter personStringConverter){
+    public StringFormatExecutorYAML(IPersonStringConverter personStringConverter) {
         this.personStringConverter = personStringConverter;
         fileUtils = new FileUtils();
         scanner = new Scanner(System.in);

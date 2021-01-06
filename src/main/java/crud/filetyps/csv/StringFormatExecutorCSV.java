@@ -1,4 +1,4 @@
-package crud.file_typs.csv;
+package crud.filetyps.csv;
 
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -6,8 +6,8 @@ import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import com.opencsv.exceptions.CsvDataTypeMismatchException;
 import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
-import crud.file_typs.Executable;
-import crud.file_utils.Constants;
+import crud.filetyps.Executable;
+import crud.fileutils.Constants;
 import person.Person;
 
 import java.io.*;
@@ -15,8 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import static crud.file_utils.Constants.ENTER_PERSON_DATA_UPDATE;
-import static crud.file_utils.Constants.FILE_WAS_UPD;
+import static crud.fileutils.Constants.ENTER_PERSON_DATA_UPDATE;
+import static crud.fileutils.Constants.FILE_WAS_UPD;
 
 public class StringFormatExecutorCSV implements Executable {
     private final Scanner scanner;
